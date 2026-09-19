@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Current weather with a clear AI-generated explanation.">
+  <title>WeatherWise | AI Weather Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">WEATHER, EXPLAINED</p>
+      <h1 id="page-title">Know what the sky<br>means for your day.</h1>
+      <p class="subtitle">Live local weather paired with a simple AI insight.</p>
+      <form id="weather-form" class="search-form" novalidate>
+        <label class="sr-only" for="city-input">City name</label>
+        <input id="city-input" name="city" type="search" placeholder="Search a city…" autocomplete="address-level2" maxlength="100" required>
+        <button type="submit">Check weather <span aria-hidden="true">→</span></button>
+      </form>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section id="weather-result" class="weather-card" hidden aria-live="polite">
+      <div class="weather-top">
+        <div>
+          <p id="location" class="location"></p>
+          <p id="condition" class="condition"></p>
+        </div>
+        <img id="weather-icon" class="weather-icon" src="" alt="" width="100" height="100">
+      </div>
+      <div class="temperature-row">
+        <span id="temperature" class="temperature"></span><span class="degree">°C</span>
+        <span id="feels-like" class="feels-like"></span>
+      </div>
+      <div class="metrics">
+        <article><span class="metric-icon">◒</span><div><span>Humidity</span><strong id="humidity"></strong></div></article>
+        <article><span class="metric-icon">↝</span><div><span>Wind</span><strong id="wind-speed"></strong></div></article>
+      </div>
+      <div class="ai-insight">
+        <p class="insight-label"><span>✦</span> AI WEATHER INSIGHT</p>
+        <p id="ai-explanation"></p>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
